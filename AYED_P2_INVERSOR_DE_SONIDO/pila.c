@@ -150,6 +150,7 @@ BOOLEAN lpila_isEmpty(LPila p) {
 /* Elimina la pila.
  * Verificar que la lista sea borrada correctamente!
  * MEL TOCO
+ * CORREGIR
  */
 BOOLEAN lpila_destruir(LPila* p) {
     /*Agregue su codigo de implementacion aqui*/
@@ -157,8 +158,9 @@ BOOLEAN lpila_destruir(LPila* p) {
     Nodo* actual = *p; //Se guarda el nodo actual
     while (actual != NULL) {
         Nodo* temporal = actual->sig;
-        free(temporal);//Se lobera el nodo actual
         actual = temporal;
+        free(temporal);//Se lobera el nodo actual
+       
     }
     return OK;
 }
