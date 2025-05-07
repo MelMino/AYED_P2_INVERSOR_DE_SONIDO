@@ -28,6 +28,10 @@ int main() {
 }
 
 
+void GlobalReportarError(char* pszFile, int iLine) {
+	fprintf(stderr, "Error detectado en %s, línea %d\n", pszFile, iLine);
+}
+
 /*programa de prueba*/
 /*
 int main2(int argc, char** argv) {
