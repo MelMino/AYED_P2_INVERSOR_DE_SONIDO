@@ -1,9 +1,9 @@
 #include "pila.h"
 #include <stdio.h>
 #include <stdlib.h>
-//ARREGLO JUANCA
+//ARREGLO JUANCAA
 /*Crea una pila implementada con un arreglo dinamico, donde se inicializa con
- un tamanho inicial, pero se redimensiona cuando se alcanza el limite de almacenamiento
+ un tamanho inicial, pero se redimensSiona cuando se alcanza el limite de almacenamiento
  del arreglo. Esto es, crear un nuevo arreglo mas grande y referenciarlo a la pila.
  Retorna NULL si algun error ocurre durante el proceso creacion*/
 
