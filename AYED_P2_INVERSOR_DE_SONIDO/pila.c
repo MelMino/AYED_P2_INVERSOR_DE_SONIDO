@@ -1,7 +1,6 @@
 #include "pila.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "confirm.h"
 //ARREGLO JUANCAAAAAAAAAAAAAAAAAAAAAAAAA
 /*Crea una pila implementada con un arreglo dinamico, donde se inicializa con
  un tamanho inicial, pero se redimensSiona cuando se alcanza el limite de almacenamiento
@@ -10,7 +9,7 @@
 
 APila apila_crear(int tamInicial) {
     /*Agregue su codigo de implementacion aqui*/
-    APila p = NULL;
+    APila p;
     return p;
 }//MIPI
 
