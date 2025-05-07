@@ -9,9 +9,11 @@
 
 APila apila_crear(int tamInicial) {
     /*Agregue su codigo de implementacion aqui*/
-    APila p;
+    APila p = (APila)malloc(sizeof(APila));
+    p->arr = (NULL**)malloc(sizeof(NULL*) * tamInicial);
+    p->sp = -1;
     return p;
-}//MIPI
+}
 
 /* Agrega un elemento a la pila (utilizando el metodo LIFO), el parametro void* valor significa que pasamos la direccion
  * del dato a guardar.  FUNCIONAAAAAAA?
@@ -19,6 +21,13 @@ APila apila_crear(int tamInicial) {
  */
 BOOLEAN apila_push(APila p, void* valor) {
     /*Agregue su codigo de implementacion aqui*/
+    if (p == NULL || p->arr == NULL) {
+        return ERROR;
+    }if (p->sp >= (sizeof(p->arr) / sizeof(*NULL))) { //compara si el sp es mas grande o igual que el tamano
+        return ERROR;
+    }
+    p->sp = p->sp++;
+    p->arr[p->sp] = valor;
     return OK;
 }
 /* Saca un elemento de la pila (utilizando el metodo LIFO), el parametro void** retval significa que pasamos la direccion
@@ -28,6 +37,10 @@ BOOLEAN apila_push(APila p, void* valor) {
  */
 BOOLEAN apila_pop(APila p, void** retval) {
     /*Agregue su codigo de implementacion aqui*/
+    if (p == NULL || p->arr == NULL || p->sp < 0) {
+        return ERROR;
+    }
+    p->sp = p->sp - 1;
     return OK;
 }
 /* Muestra el elemento que esta en la cima de la pila (utilizando el metodo LIFO), el parametro void** retval significa que pasamos la direccion
@@ -37,6 +50,7 @@ BOOLEAN apila_pop(APila p, void** retval) {
  */
 BOOLEAN apila_top(APila p, void** retval) {
     /*Agregue su codigo de implementacion aqui*/
+    *retval = p->sp;
     return OK;
 }
 
@@ -45,12 +59,20 @@ BOOLEAN apila_top(APila p, void** retval) {
  */
 BOOLEAN apila_isEmpty(APila p) {
     /*Agregue su codigo de implementacion aqui*/
-    return TRUE;
+    if (p == NULL || p->sp == -1) {
+        return TRUE;
+    }
+    return FALSE;
 }
 /* Elimina la pila.
     verificar que los datos sean eliminados correctamente.!
  */
 BOOLEAN apila_destruir(APila p) {
+    if (p == NULL || p->arr == NULL) {
+        return ERROR;
+    }
+    free(p->arr);
+    free(p);
     return OK;
 }
 
