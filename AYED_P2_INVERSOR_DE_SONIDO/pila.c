@@ -1,4 +1,6 @@
 #include "pila.h"
+#include "boolean.h"
+#include "confirm.h"
 #include <stdio.h>
 #include <stdlib.h>
 //ARREGLO JUANCAAAAAAAAAAAAAAAAA
@@ -9,8 +11,9 @@
 
 APila apila_crear(int tamInicial) {
     /*Agregue su codigo de implementacion aqui*/
-    APila p = (APila)malloc(sizeof(APila));
-    p->arr = (NULL**)malloc(sizeof(NULL*) * tamInicial);
+    APila p = (APila)malloc(sizeof(_APila));
+    p->arr = (void**)malloc(sizeof(void*) * tamInicial);
+    p->tam = tamInicial;
     p->sp = -1;
     return p;
 }
@@ -23,7 +26,7 @@ BOOLEAN apila_push(APila p, void* valor) {
     /*Agregue su codigo de implementacion aqui*/
     if (p == NULL || p->arr == NULL) {
         return ERROR;
-    }if (p->sp >= (sizeof(p->arr) / sizeof(*NULL))) { //compara si el sp es mas grande o igual que el tamano
+    }if (p->sp >= p->tam) { 
         return ERROR;
     }
     p->sp = p->sp++;
@@ -50,7 +53,8 @@ BOOLEAN apila_pop(APila p, void** retval) {
  */
 BOOLEAN apila_top(APila p, void** retval) {
     /*Agregue su codigo de implementacion aqui*/
-    *retval = p->sp;
+    int* x = &p->sp;
+    *retval = x;
     return OK;
 }
 

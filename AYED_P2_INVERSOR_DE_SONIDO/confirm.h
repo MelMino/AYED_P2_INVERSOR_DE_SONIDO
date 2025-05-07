@@ -12,7 +12,7 @@
 	if(NULL==v){\
 		return (retval);\
 	}\
-}
+	}
 /* Si expr no es verdadero retornar */
 #define CONFIRM_RETURN(expr) \
 if (!(expr)) { GlobalReportarError(__FILE__, __LINE__);  return; }
