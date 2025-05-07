@@ -1,0 +1,138 @@
+#include "pila.h"
+#include <stdio.h>
+#include <stdlib.h>
+//ARREGLO JUANCA
+/*Crea una pila implementada con un arreglo dinamico, donde se inicializa con
+ un tamanho inicial, pero se redimensiona cuando se alcanza el limite de almacenamiento
+ del arreglo. Esto es, crear un nuevo arreglo mas grande y referenciarlo a la pila.
+ Retorna NULL si algun error ocurre durante el proceso creacion*/
+
+APila apila_crear(int tamInicial) {
+    /*Agregue su codigo de implementacion aqui*/
+    APila p;
+    return p;
+}//MIPI
+
+/* Agrega un elemento a la pila (utilizando el metodo LIFO), el parametro void* valor significa que pasamos la direccion
+ * del dato a guardar.  FUNCIONAAAAAAA?
+ * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
+ */
+BOOLEAN apila_push(APila p, void* valor) {
+    /*Agregue su codigo de implementacion aqui*/
+    return OK;
+}
+/* Saca un elemento de la pila (utilizando el metodo LIFO), el parametro void** retval significa que pasamos la direccion
+ * del puntero del dato a guardar.(puntero a puntero).
+ * Y asigna el dato sacado en el parametro retval (paso por referencia);
+ * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
+ */
+BOOLEAN apila_pop(APila p, void** retval) {
+    /*Agregue su codigo de implementacion aqui*/
+    return OK;
+}
+/* Muestra el elemento que esta en la cima de la pila (utilizando el metodo LIFO), el parametro void** retval significa que pasamos la direccion
+ * del puntero del dato a guardar.(puntero a puntero).
+ * Y asigna el dato de la cima en el parametro retval (paso por referencia);
+ * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
+ */
+BOOLEAN apila_top(APila p, void** retval) {
+    /*Agregue su codigo de implementacion aqui*/
+    return OK;
+}
+
+/* Devuelve TRUE si la pila esta vacia. sino devuelve false,
+   Si hay error devuelve TRUE (para evitar portlemas de bucles infinitos en nuestro programa);
+ */
+BOOLEAN apila_isEmpty(APila p) {
+    /*Agregue su codigo de implementacion aqui*/
+    return TRUE;
+}
+/* Elimina la pila.
+    verificar que los datos sean eliminados correctamente.!
+ */
+BOOLEAN apila_destruir(APila p) {
+    return OK;
+}
+
+/*Implementacion de Pila con lista ligada*/
+
+/* Crea una pila implementada con listas ligadas.
+ *
+ *Tip, no hay requisito de saber el tamanho de la pila. se puede usar un flag de vacio|novacio
+ *para mantener la funcion isEmpty mas sencillo.
+ * Retorna NULL si hubo errores.
+ */
+
+LPila lpila_crear() {
+    /*Agregue su codigo de implementacion aqui*/
+    LPila p = NULL;
+    return p;
+}
+/* Agrega un elemento a la pila (utilizando el metodo LIFO), el parametro void* valor significa que pasamos la direccion
+ * del dato a guardar.
+ * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
+ * MEL TOCO
+ */
+BOOLEAN lpila_push(LPila* p, void* valor) {
+    /*Agregue su codigo de implementacion aqui*/
+    //Se reserva memoria pra un nuevo nodo
+    CONFIRM_NOTNULL(p, FALSE);
+    Nodo* nuevo = (Nodo*)malloc(sizeof(Nodo));
+    CONFIRM_RETVAL(nuevo != NULL, FALSE); //Verificar si se asigno bien
+    nuevo->valor = valor; //Se asigna el nuevo valr
+    nuevo->sig = *p;
+    *p = nuevo; // Actualiza el top
+    return OK;
+}
+/* Saca un elemento de la pila (utilizando el metodo LIFO), el parametro void** retval significa que pasamos la direccion
+ * del puntero del dato a guardar.(puntero a puntero).
+ * Y asigna el dato sacado en el parametro retval (paso por referencia);
+ * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
+ */
+BOOLEAN lpila_pop(LPila* p, void** valor) {
+    /*Agregue su codigo de implementacion aqui*/
+    CONFIRM_NOTNULL(p, FALSE);
+    CONFIRM_RETVAL(*p != NULL, FALSE);//Verifica si la pila esta vacia 
+    Nodo* temporal = *p; //Se guarda en una variable temporal el sig nodo
+    *valor = temporal->valor; //Se obtiene el valor del nodo
+    *p = temporal->sig; // Pasa al siguiente nodo
+    free(temporal);//Se libera el nodo
+    return OK;
+}
+/* Muestra el elemento que esta en la cima de la pila (utilizando el metodo LIFO), el parametro void** retval significa que pasamos la direccion
+ * del puntero del dato a guardar.(puntero a puntero).
+ * Y asigna el dato de la cima en el parametro retval (paso por referencia);
+ * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
+ * MEL TOCO
+ */
+BOOLEAN lpila_top(LPila* p, void** valor) {
+    /*Agregue su codigo de implementacion aqui*/
+    CONFIRM_NOTNULL(p, FALSE);
+    CONFIRM_RETVAL(*p != NULL, FALSE);//Verifica si la pila esta vacia 
+    *valor = (*p)->valor; //Obtiene el valor del tope de la pila
+    return OK;
+}
+/* Devuelve TRUE si la pila esta vacia. sino devuelve false,
+   Si hay error devuelve TRUE (para evitar portlemas de bucles infinitos en nuestro programa);
+   MEL TOCO
+ */
+BOOLEAN lpila_isEmpty(LPila p) {
+    /*Agregue su codigo de implementacion aqui*/
+    //Retorna true si esta vacio sino false 
+    return (p == NULL);
+}
+/* Elimina la pila.
+ * Verificar que la lista sea borrada correctamente!
+ * MEL TOCO
+ */
+BOOLEAN lpila_destruir(LPila* p) {
+    /*Agregue su codigo de implementacion aqui*/
+    CONFIRM_NOTNULL(p, FALSE);
+    Nodo* actual = *p; //Se guarda el nodo actual
+    while (actual != NULL) {
+        Nodo* temporal = actual->sig;
+        free(temporal);//Se lobera el nodo actual
+        actual = temporal;
+    }
+    return OK;
+}
