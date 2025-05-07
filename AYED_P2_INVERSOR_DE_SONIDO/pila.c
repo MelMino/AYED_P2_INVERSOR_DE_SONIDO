@@ -157,8 +157,8 @@ BOOLEAN lpila_destruir(LPila* p) {
     CONFIRM_NOTNULL(p, FALSE);
     Nodo* actual = *p; //Se guarda el nodo actual
     while (actual != NULL) {
-        Nodo* temporal = actual->sig;
-        actual = temporal;
+        Nodo* temporal = actual;
+        actual = actual->sig;
         free(temporal);//Se lobera el nodo actual
        
     }
