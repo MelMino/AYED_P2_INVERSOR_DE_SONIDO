@@ -102,7 +102,6 @@ LPila lpila_crear() {
 BOOLEAN lpila_push(LPila* p, void* valor) {
     /*Agregue su codigo de implementacion aqui*/
     //Se reserva memoria pra un nuevo nodo
-    CONFIRM_NOTNULL(p, FALSE);
     Nodo* nuevo = (Nodo*)malloc(sizeof(Nodo));
     CONFIRM_RETVAL(nuevo != NULL, FALSE); //Verificar si se asigno bien
     nuevo->valor = valor; //Se asigna el nuevo valr
@@ -117,11 +116,9 @@ BOOLEAN lpila_push(LPila* p, void* valor) {
  */
 BOOLEAN lpila_pop(LPila* p, void** valor) {
     /*Agregue su codigo de implementacion aqui*/
-    CONFIRM_NOTNULL(p, FALSE);
     CONFIRM_RETVAL(*p != NULL, FALSE);//Verifica si la pila esta vacia 
     Nodo* temporal = *p; //Se guarda en una variable temporal el sig nodo
     *valor = temporal->valor; //Se obtiene el valor del nodo
-    *p = temporal->sig; // Pasa al siguiente nodo
     free(temporal);//Se libera el nodo
     return OK;
 }
@@ -133,7 +130,6 @@ BOOLEAN lpila_pop(LPila* p, void** valor) {
  */
 BOOLEAN lpila_top(LPila* p, void** valor) {
     /*Agregue su codigo de implementacion aqui*/
-    CONFIRM_NOTNULL(p, FALSE);
     CONFIRM_RETVAL(*p != NULL, FALSE);//Verifica si la pila esta vacia 
     *valor = (*p)->valor; //Obtiene el valor del tope de la pila
     return OK;
@@ -154,7 +150,6 @@ BOOLEAN lpila_isEmpty(LPila p) {
  */
 BOOLEAN lpila_destruir(LPila* p) {
     /*Agregue su codigo de implementacion aqui*/
-    CONFIRM_NOTNULL(p, FALSE);
     Nodo* actual = *p; //Se guarda el nodo actual
     while (actual != NULL) {
         Nodo* temporal = actual;
@@ -162,6 +157,5 @@ BOOLEAN lpila_destruir(LPila* p) {
         free(temporal);//Se lobera el nodo actual
        
     }
-    *p = NULL;
     return OK;
 }
