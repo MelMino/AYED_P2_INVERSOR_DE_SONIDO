@@ -92,7 +92,7 @@ BOOLEAN apila_destruir(APila p) {
 LPila lpila_crear() {
     /*Agregue su codigo de implementacion aqui*/
     LPila p = (LPila)malloc(sizeof(LPila));
-    CONFIRM_NOTNULL(p,0);
+    CONFIRM_NOTNULL(p,FALSE);
     p->sig = NULL;
     return p;
 }
