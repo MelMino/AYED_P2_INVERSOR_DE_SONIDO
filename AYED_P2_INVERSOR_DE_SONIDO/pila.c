@@ -99,12 +99,14 @@ LPila lpila_crear() {
  * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
  * MEL TOCO
  */
-BOOLEAN lpila_push(LPila p, void* valor) {
+BOOLEAN lpila_push(LPila* p, void* valor) {
     /*Agregue su codigo de implementacion aqui*/
     //Se reserva memoria pra un nuevo nodo
     Nodo* nuevo = (Nodo*)malloc(sizeof(Nodo));
+    CONFIRM_NOTNULL(nuevo, FALSE);
     nuevo->valor = valor; //Se asigna el nuevo valr
-    nuevo->sig = p;
+    nuevo->sig = *p;
+    *p = nuevo;
     return OK;
 }
 /* Saca un elemento de la pila (utilizando el metodo LIFO), el parametro void** retval significa que pasamos la direccion
@@ -112,11 +114,12 @@ BOOLEAN lpila_push(LPila p, void* valor) {
  * Y asigna el dato sacado en el parametro retval (paso por referencia);
  * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
  */
-BOOLEAN lpila_pop(LPila p, void** valor) {
+BOOLEAN lpila_pop(LPila* p, void** valor) {
     /*Agregue su codigo de implementacion aqui*/
-    CONFIRM_NOTNULL(p, FALSE);
-    Nodo* temporal = p; //Se guarda en una variable temporal el sig nodo
+    CONFIRM_NOTNULL(*p, FALSE);
+    Nodo* temporal = *p; //Se guarda en una variable temporal el sig nodo
     *valor = temporal->valor; //Se obtiene el valor del nodo
+    *p = temporal->sig;
     free(temporal);//Se libera el nodo
     return OK;
 }
@@ -146,14 +149,15 @@ BOOLEAN lpila_isEmpty(LPila p) {
  * MEL TOCO
  * CORREGIR
  */
-BOOLEAN lpila_destruir(LPila p) {
+BOOLEAN lpila_destruir(LPila* p) {
     /*Agregue su codigo de implementacion aqui*/
-    Nodo* actual = p; //Se guarda el nodo actual
+    Nodo* actual = *p; //Se guarda el nodo actual
     while (actual != NULL) {
         Nodo* temporal = actual;
         actual = actual->sig;
         free(temporal);//Se lobera el nodo actual
        
     }
+    *p = NULL;
     return OK;
 }
