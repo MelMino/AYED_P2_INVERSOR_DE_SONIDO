@@ -72,13 +72,13 @@ LPila lpila_crear();
 * del dato a guardar.
 * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
 */
-BOOLEAN lpila_push(LPila* p, void* valor);
+BOOLEAN lpila_push(LPila p, void* valor);
 /* Saca un elemento de la pila (utilizando el metodo LIFO), el parametro void** retval significa que pasamos la direccion
 * del puntero del dato a guardar.(puntero a puntero).
 * Y asigna el dato sacado en el parametro retval (paso por referencia);
 * Retorna ok si no hubo errores. Si hubo algun error la pila no es modificada
 */
-BOOLEAN lpila_pop(LPila* p, void** valor);
+BOOLEAN lpila_pop(LPila p, void** valor);
 /* Muestra el elemento que esta en la cima de la pila (utilizando el metodo LIFO), el parametro void** retval significa que pasamos la direccion
 * del puntero del dato a guardar.(puntero a puntero).
 * Y asigna el dato de la cima en el parametro retval (paso por referencia);
