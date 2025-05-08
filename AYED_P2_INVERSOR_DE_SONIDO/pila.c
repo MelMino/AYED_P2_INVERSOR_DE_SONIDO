@@ -103,8 +103,6 @@ BOOLEAN lpila_push(LPila p, void* valor) {
     /*Agregue su codigo de implementacion aqui*/
     //Se reserva memoria pra un nuevo nodo
     Nodo* nuevo = (Nodo*)malloc(sizeof(Nodo));
-    CONFIRM_NOTNULL(p, FALSE);
-    CONFIRM_RETVAL(nuevo != NULL, FALSE); //Verificar si se asigno bien
     nuevo->valor = valor; //Se asigna el nuevo valr
     nuevo->sig = p;
     return OK;
