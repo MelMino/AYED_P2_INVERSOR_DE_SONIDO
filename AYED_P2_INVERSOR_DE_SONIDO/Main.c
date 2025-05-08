@@ -13,7 +13,7 @@
 #include <string.h>
 #include "confirm.h"
 #include "pila.h"
-
+/*
 int main() {
 	void* val = NULL;
 	int y = 3;
@@ -28,14 +28,14 @@ int main() {
 
 }
 
-
+*/
 void GlobalReportarError(char* pszFile, int iLine) {
 	fprintf(stderr, "Error detectado en %s, línea %d\n", pszFile, iLine);
 }
 
+
 /*programa de prueba*/
-/*
-int main2(int argc, char** argv) {
+int main(int argc, char** argv) {
 	LPila p = lpila_crear();
 	char* data = (char*)malloc(sizeof(char) * 10);
 	if (NULL == p) printf("pila nula! \n");
@@ -64,10 +64,9 @@ void procesarParametros(char** input_file, char** output_file, BOOLEAN* tipo_lpi
 
 }
 
-int main(int argc, char** argv) {*/
+int main2(int argc, char** argv) {
 
 	/*manejar argumentos*/
-/*
 	char* input_file = NULL;
 	char* output_file = NULL;
 	BOOLEAN tipo_lpila = TRUE;
@@ -77,9 +76,8 @@ int main(int argc, char** argv) {*/
 	LPila lp = NULL;
 	APila ap = NULL;
 	/* proceso de parametros */
-	/* { */
+	{
 		/*declaracion de variables al inicio del bloque */
-		/*
 		int i = 1;
 		char* tipo_pila = NULL;
 		for (i = 1; i < argc; i++) {
@@ -113,9 +111,8 @@ int main(int argc, char** argv) {*/
 	assert(NULL != input_file);
 	assert(NULL != output_file);
 	if (NULL == input_file || NULL == output_file)return EXIT_SUCCESS;
-	*/
+
 	/* abrir archivo de entrada */
-		/*
 	fd = fopen(input_file, "r");
 	if (tipo_lpila == FALSE)ap = apila_crear(100);
 	else lp = lpila_crear();
@@ -124,9 +121,8 @@ int main(int argc, char** argv) {*/
 		assert(0);
 		return EXIT_SUCCESS;
 	}
-	if (fd != NULL) {*/
+	if (fd != NULL) {
 		/*leer cabecera del archivo*/
-		/*
 		char str[100];
 		char str1[500];
 		int cont = 1;
@@ -134,11 +130,9 @@ int main(int argc, char** argv) {*/
 		fscanf(fd, "%s%s%s%d", str, str, str, &sampleRate);
 		printf("; sample Rate %d \n", sampleRate);
 		/*leer comentarios dejados por el programa de conversion*/
-		/*
 		fgets(str1, 500, fd);
 		/*ignorar comentarios
 		printf("fgets:%s\n",str1);*/
-		/*
 		while (!feof(fd) && cont == 1) {
 			char c = fgetc(fd);
 			if (c == ';') {
@@ -152,8 +146,7 @@ int main(int argc, char** argv) {*/
 		while (!feof(fd)) {
 			/*usamos malloc para reservar esta memoria y no perder el dato como en una variable local
 			notese que si se usa una variable local el dato se perderia al salir del bloque while*/
-			/*char* strData = (char*)malloc(sizeof(char) * 100);/*tamanho 100, para evitar complejidad al proyecto*/
-	/*
+			char* strData = (char*)malloc(sizeof(char) * 100);/*tamanho 100, para evitar complejidad al proyecto*/
 			fscanf(fd, "%s%s", strTimeStep, strData);
 			if (feof(fd)) continue;
 			if (strlen(strData) > 0) {
@@ -173,7 +166,6 @@ int main(int argc, char** argv) {*/
 			count++;
 		}
 	}
-	/*
 	fclose(fd);
 	printf("%d samples in file\n", count);
 
@@ -181,7 +173,7 @@ int main(int argc, char** argv) {*/
 		FILE* fd2 = fopen(output_file, "w");
 		if (NULL != fd2) {
 			int numSteps = 0;
-			char* strData; /*aqui el dato va a ser referenciado a esta direccion (puntero a char) *//*
+			char* strData; /*aqui el dato va a ser referenciado a esta direccion (puntero a char) */
 			fprintf(fd2, "; Sample Rate %d\n", sampleRate);
 			if (tipo_lpila == FALSE) {
 				while (!apila_isEmpty(ap)) {
@@ -192,7 +184,7 @@ int main(int argc, char** argv) {*/
 					else {
 						fprintf(fd2, "%f\t%s\n", (double)numSteps / sampleRate, strData);
 						numSteps++;
-						free(strData); /* liberamos ese malloc hecho dentro del while*//*
+						free(strData); /* liberamos ese malloc hecho dentro del while*/
 					}
 				}
 			}
@@ -206,7 +198,7 @@ int main(int argc, char** argv) {*/
 						fprintf(fd2, "%f\t%s\n", (double)numSteps / sampleRate, strData);
 						numSteps++;
 						free(strData); /* liberamos ese malloc hecho dentro del while*/
-					/*}*//*
+					}
 				}
 			}
 
@@ -227,5 +219,6 @@ int main(int argc, char** argv) {*/
 	}
 
 	return (EXIT_SUCCESS);
-}*/
+}
+
 
