@@ -24,6 +24,7 @@ int main() {
 	apila_pop(p, val);
 	apila_pop(p, val);
 	apila_isEmpty(p);
+	
 
 }
 
