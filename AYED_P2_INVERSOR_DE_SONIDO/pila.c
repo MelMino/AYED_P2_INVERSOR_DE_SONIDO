@@ -43,6 +43,7 @@ BOOLEAN apila_pop(APila p, void** retval) {
     if (p == NULL || p->arr == NULL || p->sp < 0) {
         return ERROR;
     }
+    *retval = &p->arr[p->sp];
     p->sp = p->sp - 1;
     return OK;
 }
@@ -53,8 +54,7 @@ BOOLEAN apila_pop(APila p, void** retval) {
  */
 BOOLEAN apila_top(APila p, void** retval) {
     /*Agregue su codigo de implementacion aqui*/
-    int* x = &p->sp;
-    *retval = x;
+    *retval = &p->arr[p->sp];
     return OK;
 }
 
