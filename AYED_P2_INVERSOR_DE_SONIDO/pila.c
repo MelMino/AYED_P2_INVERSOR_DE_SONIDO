@@ -160,6 +160,5 @@ BOOLEAN lpila_destruir(LPila* p) {
         free(temporal);//Se lobera el nodo actual
        
     }
-    *p = NULL;
     return OK;
 }
