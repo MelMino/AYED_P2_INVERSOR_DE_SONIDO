@@ -148,8 +148,6 @@ BOOLEAN lpila_isEmpty(LPila p) {
 }
 /* Elimina la pila.
  * Verificar que la lista sea borrada correctamente!
- * MEL TOCO
- * CORREGIR
  */
 BOOLEAN lpila_destruir(LPila* p) {
     /*Agregue su codigo de implementacion aqui*/
