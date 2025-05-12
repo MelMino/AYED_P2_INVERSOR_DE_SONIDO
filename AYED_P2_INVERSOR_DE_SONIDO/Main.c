@@ -13,20 +13,6 @@
 #include <string.h>
 #include "confirm.h"
 #include "pila.h"
-/*
-int main() {
-	void* val = NULL;
-	int y = 3;
-	int* x= &y;
-	APila p = apila_crear(2);
-	apila_push(p, x);
-	apila_push(p, x);
-	apila_pop(p, val);
-	apila_pop(p, val);
-	apila_isEmpty(p);
-	
-
-}
 
 */
 void GlobalReportarError(char* pszFile, int iLine) {
