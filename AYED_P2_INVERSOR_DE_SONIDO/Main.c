@@ -14,7 +14,7 @@
 #include "confirm.h"
 #include "pila.h"
 
-*/
+//Implementacion de GlobalReportarError
 void GlobalReportarError(char* pszFile, int iLine) {
 	fprintf(stderr, "Error detectado en %s, línea %d\n", pszFile, iLine);
 }
@@ -53,8 +53,8 @@ void procesarParametros(char** input_file, char** output_file, BOOLEAN* tipo_lpi
 int main(int argc, char** argv) {
 
 	/*manejar argumentos*/
-	char* input_file = "C:/Users/minom/OneDrive/Desktop/MEL-UNI/Proy2/Proy2/question.dat";
-	char* output_file = "C:/Users/minom/OneDrive/Desktop/MEL-UNI/Proy2/Proy2/questionInv.dat";
+	char* input_file = "C:/Users/minom/OneDrive/Desktop/MEL-UNI/Proy2/Proy2/questionv2.dat";
+	char* output_file = "C:/Users/minom/OneDrive/Desktop/MEL-UNI/Proy2/Proy2/question2Inv.dat";
 	BOOLEAN tipo_lpila = TRUE;
 	FILE* fd = NULL;
 	long sampleRate = 0;
