@@ -92,7 +92,7 @@ BOOLEAN lpila_isEmpty(LPila p);
 /* Elimina la pila.
 * Verificar que la lista sea borrada correctamente!
 */
-BOOLEAN lpila_destruir(LPila* p);
+BOOLEAN lpila_destruir(LPila p);
 
 #endif
 

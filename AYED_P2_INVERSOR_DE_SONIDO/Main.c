@@ -35,7 +35,7 @@ void GlobalReportarError(char* pszFile, int iLine) {
 
 
 /*programa de prueba*/
-int main(int argc, char** argv) {
+int main2(int argc, char** argv) {
 	LPila p = lpila_crear();
 	char* data = (char*)malloc(sizeof(char) * 10);
 	if (NULL == p) printf("pila nula! \n");
@@ -64,11 +64,11 @@ void procesarParametros(char** input_file, char** output_file, BOOLEAN* tipo_lpi
 
 }
 
-int main2(int argc, char** argv) {
+int main(int argc, char** argv) {
 
 	/*manejar argumentos*/
-	char* input_file = NULL;
-	char* output_file = NULL;
+	char* input_file = "C:/Users/minom/OneDrive/Desktop/MEL-UNI/Proy2/Proy2/question.dat";
+	char* output_file = "C:/Users/minom/OneDrive/Desktop/MEL-UNI/Proy2/Proy2/questionInv.dat";
 	BOOLEAN tipo_lpila = TRUE;
 	FILE* fd = NULL;
 	long sampleRate = 0;
